@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electron Webview</title>
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,700&display=swap');
+
+
+    body {
+      margin: 0;
+      background-color: #1a1a1a;
+      color: white;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      flex-wrap: nowrap;
+      height: 100vh;
+      
+    }
+    .webview-container {
+      width: -webkit-fill-available;
+      height: -webkit-fill-available;
+        position: relative;
+     
+    }
+
+    .border-layer {
+        border: 26px solid transparent;
+        border-image: url("public/resources/border.png") 40 round;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 52px);
+        height: calc(100% - 52px);
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        
+    }
+
+
+    #title-bar {
+        background-image: url("public/resources/header.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        -webkit-app-region: drag;
+        position: relative;
+    }
+
+    .title {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 30px;
+        color: #b7ae8c;
+        pointer-events: none;
+        cursor: none;
+        font-family: "Cormorant Garamond", serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+        user-select: none;
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none;    /* Firefox */
+        -ms-user-select: none;     /* IE/Edge */
+    }
+
+    .titleBig {
+        font-size: 35px;
+        color: #b7ae8c;
+        pointer-events: none;
+        cursor: none;
+        font-family: "Cormorant Garamond", serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+        user-select: none;
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none;    /* Firefox */
+        -ms-user-select: none;     /* IE/Edge */
+    }
+
+
+    #close {
+        position:absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background-image: url('public/resources/close.png');
+        background-color: transparent;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 32px;
+        height: 32px;        
+        border: none;
+        outline: none;       
+        z-index: 99;
+      -webkit-app-region: no-drag;
+
+    }
+
+    #close:hover {
+      -webkit-app-region: no-drag;
+
+        filter: brightness(150%);
+        transition: filter 0.2s ease;
+    }
+    
+    webview {
+      width: calc(100%-11px);
+      height: 100%;
+      border: none;
+      padding-right: 11px;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <div id="title-bar"> 
+    <span class="title"><span class="titleBig">F</span>ILTERS </span>
+    <button id="close" title="Close"/>
+  </div> 
+  
+  <div class="webview-container">
+    <webview
+      src="https://poe2filter.com/quick-filters"
+    ></webview>
+
+    <div class="border-layer"></div>
+
+  </div>
+  
+  <script src="renderer_filter.js"></script>
+</body>
+</html>
