@@ -32,7 +32,7 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## UI Demo
 
-![UI Demo](ui-Demo.png)
+![UI Demo](ui-demo.png)
 
 
 
